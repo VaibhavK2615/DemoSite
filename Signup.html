@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+        <a class="navbar-brand" href="index.html">DemoSite</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+        
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="Login2.html" style="position: relative; left: 680px;">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Signup.html" style="position: relative; left: 540px;">Signup</a>
+            </li>
+        </ul>
+        </div>
+        </div>
+    </nav>
+
+    <div class="container2">
+        <h2>Registration Form</h2>
+        <form id="RegistrationForm">
+            
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" oninput="validateName()" required>
+            <span id="nameError" class="error"></span>
+
+            <label for="college">College</label>
+            <input type="text" id="college" name="college" oninput="validateCollege()" required>
+            <span id="collegeError" class="error"></span>
+
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender" onchange="validateGender()" required>
+                <option value="" selected disabled>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <span id="genderError" class="error"></span>
+
+            <label for="mob">Mobile</label>
+            <input type="tel" id="mob" name="mob" oninput="validateMob()" required>
+            <span id="mobError" class="error"></span>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" oninput="validateEmail()" required>
+            <span id="emailError" class="error"></span>
+
+            <label for="password">Password</label>
+            <input type="text" id="password" name="password" oninput="validatePassword()" required>
+            <span id="passwordError" class="error"></span>
+            <div class="password-strength" id="passwordStrength"></div>
+
+            <span style="text-align: center;">
+                <input type="submit" value="submit">
+            </span>
+
+        </form>
+    </div><br>
+
+    <footer class="footer text-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4">
+              <h4>Quick Links</h4>
+              <ul class="list-unstyled">
+                <li><a href="index.html" class="link">Home</a></li>
+                <li><a href="#" class="link">About</a></li>
+                <li><a href="#" class="link">Services</a></li>
+                <li><a href="#" class="link">Contact</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-4">
+              <h4>Follow Us</h4>
+              <ul class="list-unstyled">
+                <li><a href="#" class="link">Facebook</a></li>
+                <li><a href="#" class="link">Twitter</a></li>
+                <li><a href="#" class="link">Instagram</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-4">
+              <h4>Contact Us</h4>
+              <ul class="list-unstyled">
+                <li>Email: example@example.com</li>
+                <li>Phone: +1234567890</li>
+                <li>Address: 123 Street, City, Country</li>
+              </ul>
+            </div>
+          </div>
+          <p>&copy; 2024 Your Website Name. All rights reserved.</p>
+          <p>Designed with <i class="fa fa-heart"></i> Linkcode Tech.</p>
+        </div>
+      </footer>
+
+      <script>
+        function validateName(){
+            const name=document.getElementById("name").value;
+            const namePattern= /^[A-Za-z]{2,}(?: [A-Za-z]{2,}){1,2}$/;
+            const nameError=document.getElementById("nameError");
+
+            if(!name.match(namePattern)){
+                nameError.textContent="Inavlid Name!";
+            }
+            else{
+                nameError.textContent="";
+            }
+        }
+
+        function validateCollege(){
+            const collegeInput=document.getElementById("college");
+            const collegeError=document.getElementById("collegeError");
+            const collegeName=collegeInput.value.trim();
+
+            const collegePattern = /^[A-Za-z\s]{2,}$/;
+
+            if(!collegeName.match(collegePattern)){
+                collegeError.textContent="Invalid College Name!";
+            }
+            else{
+                collegeError.textContent="";
+            }
+        }
+
+        function validateGender(){
+            const genderSelect=document.getElementById("gender");
+            const genderError=document.getElementById("genderError");
+
+            if(genderSelect.value == ""){
+                genderSelect.textContent="Please select a gender";
+            }
+            else{
+                genderError.textContent="";
+            }
+        }
+
+        function validateMob(){
+            const mob=document.getElementById("mob").value;
+            const mobilePattern= /^(?:91|0)?[789]\d{9}$/;
+            const mobError=document.getElementById("mobError");
+
+            if(!mob.match(mobilePattern)){
+                mobError.textContent= "Invalid Mobile Number!";
+            }
+            else{
+                mobError.textContent="";
+            }
+        }
+
+        function validateEmail(){
+            const email=document.getElementById("email").value;
+            const emailPattern= /^[A-za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-za-z]{2,4}$/;
+            const emailError=document.getElementById("emailError");
+
+            if(!email.match(emailPattern)){
+                emailError.textContent= "Invalid Email!";
+            }
+            else{
+                emailError.textContent="";
+            }
+        }
+
+        function validatePassword(){
+            const password=document.getElementById("password").value;
+            const passwordError=document.getElementById("passwordError");
+            const passwordStrength=document.getElementById("passwordStrength");
+
+            const weakPasswordPattern= /^[a-z,0-9]{6,}$/;
+            const moderatePasswordPattern= /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            const strongPasswordPattern= /^(?=.*[a-z])(?=.*[A-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{12,}$/;
+
+            passwordError.textContent == "";
+
+            if(password.match(weakPasswordPattern)){
+                passwordStrength.textContent="Weak";
+                passwordStrength.style.color="red";
+            }
+            else if(password.match(moderatePasswordPattern)){
+                passwordStrength.textContent="Moderate";
+                passwordStrength.style.color="orange";
+            }
+            else if(password.match(strongPasswordPattern)){
+                passwordStrength.textContent="Strong";
+                passwordStrength.style.color="green";
+            }
+        }
+
+        document.getElementById("RegistrationForm").addEventListener("submit", function(event){
+            event.preventDefault();
+            const name=document.getElementById("name");
+            const college=document.getElementById("college");
+            const gender=document.getElementById("gender");
+            const mob=document.getElementById("mob");
+            const em=document.getElementById("email");
+            const password=document.getElementById("password");
+
+            if(nameError.textContent == "" && collegeError.textContent == "" && genderError.textContent == "" && mobError.textContent == "" && emailError.textContent == "" && passwordError.textContent == ""){
+
+                localStorage.setItem("email",em.value);
+                localStorage.setItem("password",password.value);
+                
+                window.open("Login.html");
+
+                console.log("Name : "+name);
+                console.log("College : "+college.value);
+                console.log("Gender : "+gender.value);
+                console.log("Mobile : "+mob.value);
+                console.log("Email : "+em.value);
+                console.log("Password : "+password.value);
+
+                document.getElementById("RegistrationForm").reset();
+                document.getElementById("passwordStrength").textContent="";
+
+                return true;
+            }
+            else{
+                return false;
+            }
+        });
+
+    </script>
+</body>
+</html>
